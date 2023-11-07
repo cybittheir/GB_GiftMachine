@@ -1,2 +1,4 @@
-package gift_machine.engine;public class Service {
+package gift_machine.engine;
+
+public class Service {
 }
