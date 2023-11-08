@@ -12,6 +12,7 @@ public class MainMenu {
 //        commandList.add(new AddToyTypes(consoleUI));
 //        commandList.add(new ShowToyTypes(consoleUI));
 //        commandList.add(new EditToyTypes(consoleUI));
+        commandList.add(new EditGiftFrequency(consoleUI));
         commandList.add(new DeleteToy(consoleUI));
         commandList.add(new RaffleGifts(consoleUI));
         commandList.add(new ExportResult(consoleUI));

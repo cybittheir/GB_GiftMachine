@@ -44,16 +44,19 @@ public class ConsoleUI implements BaseUI{
     }
 
     public void exportResult(){
-//        presenter.saveResult();
+//        gate.saveResult();
     }
 
     public void exportToysList(){
-//        presenter.saveToysList();
+        gate.saveToysList();
     }
     public void importToysList(){
-//        presenter.readToysList();
+        gate.readToysList();
     }
 
+    public void editGiftFrequency(){
+
+    }
     @Override
     public void printAnswer(String text) {
         System.out.println(text);

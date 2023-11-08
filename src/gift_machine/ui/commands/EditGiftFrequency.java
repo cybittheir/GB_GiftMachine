@@ -11,6 +11,6 @@ public class EditGiftFrequency extends Command{
 
     @Override
     public void execute() {
-        getConsoleUI().finish();
+        getConsoleUI().editGiftFrequency();
     }
 }

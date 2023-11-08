@@ -22,4 +22,12 @@ public class Gate {
         baseUI.printAnswer(engine.getStock());
     }
 
+    public void readToysList(){
+
+    }
+
+    public void saveToysList(){
+
+    }
+
 }
