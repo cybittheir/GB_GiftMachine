@@ -1,13 +1,16 @@
 package gift_machine.ui;
 
-import java.time.LocalDate;
+import gift_machine.gate.Gate;
+import gift_machine.engine.stock.ToyStore;
 import java.util.Scanner;
 public class ConsoleUI implements BaseUI{
+    private Gate gate;
     private MainMenu menu;
     private boolean workOn;
     private Scanner scanner;
 
     public ConsoleUI(){
+        gate = new Gate(this);
         scanner = new Scanner(System.in);
         menu = new MainMenu(this);
         workOn = true;
@@ -32,15 +35,23 @@ public class ConsoleUI implements BaseUI{
         System.exit(0);
     }
 
+    public void showToys(){
+        gate.getToyStore();
+    }
+
     private void errorInput() {
         System.out.println("------------------------\nWrong data. Try again.\n------------------------\n");
     }
 
-    public void exportGifts(){
-//        presenter.getGifts();
+    public void exportResult(){
+//        presenter.saveResult();
     }
-    public void importGifts(){
-//        presenter.getGifts();
+
+    public void exportToysList(){
+//        presenter.saveToysList();
+    }
+    public void importToysList(){
+//        presenter.readToysList();
     }
 
     @Override

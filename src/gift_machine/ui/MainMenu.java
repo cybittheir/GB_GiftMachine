@@ -7,6 +7,16 @@ public class MainMenu {
     private List<Command> commandList;
     public MainMenu(ConsoleUI consoleUI){
         commandList = new ArrayList<>();
+        commandList.add(new AddToy(consoleUI));
+        commandList.add(new ShowToys(consoleUI));
+//        commandList.add(new AddToyTypes(consoleUI));
+//        commandList.add(new ShowToyTypes(consoleUI));
+//        commandList.add(new EditToyTypes(consoleUI));
+        commandList.add(new DeleteToy(consoleUI));
+        commandList.add(new RaffleGifts(consoleUI));
+        commandList.add(new ExportResult(consoleUI));
+        commandList.add(new ImportToysList(consoleUI));
+        commandList.add(new ExportToysList(consoleUI));
         commandList.add(new Finish(consoleUI));
     }
 
