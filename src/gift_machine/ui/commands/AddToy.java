@@ -6,11 +6,11 @@ public class AddToy extends Command{
 
     public AddToy(ConsoleUI consoleUI){
 
-        super("TODO: Add Toy",consoleUI);
+        super("Add Toy",consoleUI);
     }
 
     @Override
     public void execute() {
-        getConsoleUI().finish();
+        getConsoleUI().addToy();
     }
 }

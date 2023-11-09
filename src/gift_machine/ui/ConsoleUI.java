@@ -18,6 +18,8 @@ public class ConsoleUI implements BaseUI{
 
     @Override
     public void start() {
+        gate.initBase();
+        System.out.println("\n --=== ToyStock loaded === -- \n");
         while (workOn){
             System.out.println(menu.menu());
             String choice = scanner.nextLine();
@@ -33,6 +35,25 @@ public class ConsoleUI implements BaseUI{
         System.out.println("----------------\nFinished. Bye");
         workOn = false;
         System.exit(0);
+    }
+
+    public void addToy(){
+        String type = getType();
+        String name = getName();
+        int amount = getAmount();
+        int frequency = getFrequency();
+        gate.addToy(name,type,amount,frequency);
+        StringBuilder sB = new StringBuilder();
+        sB.append("NEW Toy - ");
+        sB.append(type);
+        sB.append(" ");
+        sB.append(name);
+        sB.append(" (");
+        sB.append(amount);
+        sB.append(" шт.; raffle frequency - ");
+        sB.append(frequency);
+        sB.append("%) ADDED\n");
+        inputSuccess(sB.toString());
     }
 
     public void showToys(){
@@ -55,11 +76,81 @@ public class ConsoleUI implements BaseUI{
     }
 
     public void editGiftFrequency(){
-
+        long tid = getToyID();
+        if (gate.checkUnitID(tid)){
+            gate.getToyInfo(tid);
+            int frequency = getFrequency();
+            gate.editToyFrequency(tid,frequency);
+            StringBuilder sB = new StringBuilder();
+            sB.append("Toy - ");
+            sB.append(gate.getToyType(tid));
+            sB.append(" ");
+            sB.append(gate.getToyName(tid));
+            sB.append(", ");
+            sB.append(gate.getToyFrequency(tid));
+            sB.append("% - raffle frequency CHANGED\n");
+            inputSuccess(sB.toString());
+            gate.getToyInfo(tid);
+        } else {errorInput();}
     }
     @Override
     public void printAnswer(String text) {
         System.out.println(text);
+    }
+
+    private String getName(){
+        System.out.println("Название игрушки: ");
+        return scanner.nextLine();
+    }
+
+    private String getType(){
+        System.out.println("Категория игрушки: ");
+        return scanner.nextLine();
+    }
+
+    private int getToyID(){
+        int result = -1;
+        while (result < 0) {
+            System.out.println("Введите ID игрушки: ");
+            String tmp=scanner.nextLine();
+            if (tmp.matches("^[0-9]*$")){
+                result = Integer.parseInt(tmp);
+            } else {errorInput();}
+        }
+        return result;
+    }
+
+
+    private int getAmount(){
+        int result = 0;
+        while (result <= 0) {
+            System.out.println("Количество (шт.): ");
+            String tmp=scanner.nextLine();
+            if (tmp.matches("^[0-9]*$")){
+                result = Integer.parseInt(tmp);
+            } else {errorInput();}
+        }
+        return result;
+    }
+
+    private int getFrequency(){
+        int result = 0;
+        while (result <= 0 || result > 9) {
+            System.out.println("Частота выпадений (%, <10%): ");
+            String tmp=scanner.nextLine();
+            if (tmp.matches("^[0-9]$")){
+                result = Integer.parseInt(tmp);
+            } else {errorInput();}
+        }
+        return result;
+    }
+
+    private void inputSuccess(String info){
+        System.out.println("*---------------");
+        System.out.printf("* %s", info);
+        System.out.println("* Database Dump saved");
+        System.out.println("*----------------");
+
     }
 
 }

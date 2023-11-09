@@ -4,7 +4,7 @@ public class ImportToysList extends Command{
 
     public ImportToysList(ConsoleUI consoleUI){
 
-        super("TODO: Import Toys List (DUMP/JSON)", consoleUI);
+        super("Import Toys List (DUMP/JSON)", consoleUI);
     }
     public void execute(){
 

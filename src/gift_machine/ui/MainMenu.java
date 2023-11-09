@@ -13,11 +13,13 @@ public class MainMenu {
 //        commandList.add(new ShowToyTypes(consoleUI));
 //        commandList.add(new EditToyTypes(consoleUI));
         commandList.add(new EditGiftFrequency(consoleUI));
-        commandList.add(new DeleteToy(consoleUI));
+//        commandList.add(new DeleteToy(consoleUI));
         commandList.add(new RaffleGifts(consoleUI));
         commandList.add(new ExportResult(consoleUI));
+/** TODO: next time - import and export to JSON
         commandList.add(new ImportToysList(consoleUI));
         commandList.add(new ExportToysList(consoleUI));
+ */
         commandList.add(new Finish(consoleUI));
     }
 

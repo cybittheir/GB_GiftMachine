@@ -48,7 +48,7 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
             sB.append(toy.getName());
             sB.append(" - ");
             sB.append(toy.getAmount());
-            sB.append("шт. / макс. частота выпаданий - ");
+            sB.append("шт. / макс. частота выпадений - ");
             sB.append(toy.getRaffleFreq());
             sB.append("%");
             sB.append("\n------------\n");
@@ -57,6 +57,75 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         return sB.toString();
     }
 
+    public String getUnitName(long id) {
+        String result = "";
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                result = toy.getName();
+            }
+        }
+        return result;
+    }
+    public String getUnitType(long id) {
+        String result = "";
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                result = toy.getType();
+            }
+        }
+        return result;
+    }
+    public Integer getUnitFrequency(long id) {
+        int result = 0;
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                result = toy.getRaffleFreq();
+            }
+        }
+        return result;
+    }
+
+    public boolean checkUnitID(long id) {
+        boolean result = false;
+        int count = 0;
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                result  = true;
+            }
+        }
+        return result;
+    }
+
+    public String getUnitStockInfo(long id){
+        StringBuilder sB = new StringBuilder();
+        sB.append("\n============\n");
+        sB.append("Toy ");
+        sB.append(id);
+        sB.append(" Info:\n");
+        sB.append("============\n");
+        int count = 0;
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                sB.append(toy.getID());
+                sB.append(". ");
+                sB.append((toy.getType()));
+                sB.append(" ");
+                sB.append(toy.getName());
+                sB.append(" - ");
+                sB.append(toy.getAmount());
+                sB.append("шт. / макс. частота выпадений - ");
+                sB.append(toy.getRaffleFreq());
+                sB.append("%");
+                sB.append("\n------------\n");
+                count++;
+            }
+        }
+        if (count > 0) {
+            return sB.toString();
+        } else {
+            return "";
+        }
+    }
     @Override
     public Iterator<T> iterator() {
         return new ToyStoreIterator(stock);

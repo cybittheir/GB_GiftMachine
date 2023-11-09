@@ -61,4 +61,41 @@ public class Engine {
         if (!initDone){getBase();}
         return stock.getFullStockInfo();
     }
+
+    public void addObjRecord(String name, String type, int amount, int frequency) {
+        if (exampleBase == true){
+            stock.clear();
+            Toy.nullCount();
+            exampleBase = false;
+        }
+        Toy rec = new Toy(name, type, amount, frequency);
+        stock.addToy(rec);
+        saveWorkDump();
+
+    }
+
+    public String getToyInfo(long id){
+        if (!initDone){getBase();}
+        return stock.getUnitStockInfo(id);
+    }
+
+    public boolean checkToyID(long id) {
+        boolean result = stock.checkUnitID(id);
+        return result;
+    }
+
+    public String getToyName(long id) {
+        String result = stock.getUnitName(id);
+        return result;
+    }
+
+    public String getToyType(long id) {
+        String result = stock.getUnitType(id);
+        return result;
+    }
+    public Integer getToyFrequency(long id) {
+        int result = stock.getUnitFrequency(id);
+        return result;
+    }
+
 }
