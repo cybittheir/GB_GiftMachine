@@ -52,7 +52,7 @@ public class Gate {
 
 
     public void editToyFrequency(long toyID,int raffleFrequency){
-
+        engine.updateUnitFrequency(toyID,raffleFrequency);
     }
     public boolean checkUnitID(long id){
         boolean result = engine.checkToyID(id);

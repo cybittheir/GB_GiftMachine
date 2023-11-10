@@ -6,7 +6,7 @@ public class EditGiftFrequency extends Command{
 
     public EditGiftFrequency(ConsoleUI consoleUI){
 
-        super("TODO: Edit Gift Frequency",consoleUI);
+        super("Edit Gift Frequency",consoleUI);
     }
 
     @Override

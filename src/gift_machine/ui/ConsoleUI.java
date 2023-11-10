@@ -89,8 +89,8 @@ public class ConsoleUI implements BaseUI{
             sB.append(", ");
             sB.append(gate.getToyFrequency(tid));
             sB.append("% - raffle frequency CHANGED\n");
+
             inputSuccess(sB.toString());
-            gate.getToyInfo(tid);
         } else {errorInput();}
     }
     @Override

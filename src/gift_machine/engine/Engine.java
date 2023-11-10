@@ -98,4 +98,7 @@ public class Engine {
         return result;
     }
 
+    public void updateUnitFrequency(long id,int freq) {
+        stock.changeUnitFrequency(id,freq);
+    }
 }

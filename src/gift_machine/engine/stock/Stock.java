@@ -6,6 +6,7 @@ public interface Stock<T> {
     String getType();
     long getID();
     int getRaffleFreq();
+
+    void setRaffleFreq(int freg);
     int getAmount();
-//    boolean checkUnitID();
 }

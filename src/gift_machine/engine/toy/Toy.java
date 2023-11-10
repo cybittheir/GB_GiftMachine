@@ -56,6 +56,10 @@ public class Toy implements Serializable, Stock<Toy> {
         return sb.toString();
     }
 
+    public void setRaffleFreq(int raffleFreq) {
+        this.raffleFreq = raffleFreq;
+    }
+
     @Override
     public String toString(){
         return getToyInfo();

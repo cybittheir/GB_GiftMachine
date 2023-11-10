@@ -85,9 +85,16 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         return result;
     }
 
+    public void changeUnitFrequency(long id, int freq){
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                toy.setRaffleFreq(freq);
+            }
+        }
+    }
+
     public boolean checkUnitID(long id) {
         boolean result = false;
-        int count = 0;
         for (T toy: stock){
             if (toy.getID() == id) {
                 result  = true;
