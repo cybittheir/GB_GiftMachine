@@ -6,11 +6,11 @@ public class RaffleGifts extends Command{
 
     public RaffleGifts(ConsoleUI consoleUI){
 
-        super("TODO: Raffle Gifts",consoleUI);
+        super("TODO: A Raffle",consoleUI);
     }
 
     @Override
     public void execute() {
-        getConsoleUI().finish();
+        getConsoleUI().raffle();
     }
 }

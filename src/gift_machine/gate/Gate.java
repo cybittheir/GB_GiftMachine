@@ -50,6 +50,13 @@ public class Gate {
         return engine.getToyFrequency(id);
     }
 
+    public Integer getAvailableMax(){
+        return engine.getAvailableMax();
+    }
+
+    public void getRaffleItemsList(){
+        engine.getRaffleItemsList();
+    }
 
     public void editToyFrequency(long toyID,int raffleFrequency){
         engine.updateUnitFrequency(toyID,raffleFrequency);
@@ -57,5 +64,10 @@ public class Gate {
     public boolean checkUnitID(long id){
         boolean result = engine.checkToyID(id);
         return result;
+    }
+
+    public void saveRaffleResult(){
+        System.out.println("Save Result");
+        engine.saveRaffleResult();
     }
 }

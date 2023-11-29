@@ -9,4 +9,5 @@ public interface Stock<T> {
 
     void setRaffleFreq(int freg);
     int getAmount();
+
 }

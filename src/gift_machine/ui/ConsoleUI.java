@@ -64,10 +64,6 @@ public class ConsoleUI implements BaseUI{
         System.out.println("------------------------\nWrong data. Try again.\n------------------------\n");
     }
 
-    public void exportResult(){
-//        gate.saveResult();
-    }
-
     public void exportToysList(){
         gate.saveToysList();
     }
@@ -93,6 +89,16 @@ public class ConsoleUI implements BaseUI{
             inputSuccess(sB.toString());
         } else {errorInput();}
     }
+
+    public void exportResult(){
+        gate.saveRaffleResult();
+    }
+
+    public void raffle(){
+
+        gate.getRaffleItemsList();
+    }
+
     @Override
     public void printAnswer(String text) {
         System.out.println(text);

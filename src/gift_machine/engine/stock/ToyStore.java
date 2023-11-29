@@ -2,29 +2,25 @@ package gift_machine.engine.stock;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-import java.util.List;
+import java.util.*;
 
 public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
     private List<T> stock;
-
+    private int availableMax;
+    public List<T> raffleItems;
     public ToyStore(List<T> stock){
         this.stock = stock;
     }
-
     public ToyStore(){
         this(new ArrayList<T>());
     }
-
     public void addToy(T toy) {
         stock.add(toy);
     }
-
     public void clear(){
         stock.clear();
     }
+
     public long setNextID(){
         long id = 0;
         for (T record: stock){
@@ -50,11 +46,66 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
             sB.append(toy.getAmount());
             sB.append("шт. / макс. частота выпадений - ");
             sB.append(toy.getRaffleFreq());
-            sB.append("%");
+            sB.append("%;");
             sB.append("\n------------\n");
         }
 
         return sB.toString();
+    }
+
+    public int getAvailableMax(){
+        int result = 10000000;
+        int availableMax = 0;
+        for (T toy: stock){
+            availableMax = (toy.getAmount()*100)/toy.getRaffleFreq();
+            if (result > availableMax) {
+                result = availableMax;
+            }
+        }
+        return result;
+    }
+
+    public List<T> getRaffleItems(){
+        raffleItems = new ArrayList<>();
+        int fullListCount = getAvailableMax();
+        int useItems;
+        for (T toy: stock){
+            useItems = toy.getRaffleFreq()*fullListCount/100;
+            for (int i =0; i<useItems;i++){
+                raffleItems.add(toy);
+            }
+        }
+
+        return raffleItems;
+    }
+
+    public List<String> getRaffleItemsList(){
+        raffleItems= getRaffleItems();
+        int tickets = getAvailableMax() + 1;
+        ArrayList<String> items = new ArrayList<String>();
+        for (int i = 0; i < tickets; i++){
+            items.add("F");
+        }
+        String ticket = "0";
+        Random rand = new Random();
+        ArrayList<String> winners = new ArrayList<String>();
+        System.out.println("=======================");
+        System.out.println("Winners:");
+        System.out.println("=======================");
+        for (T toy: raffleItems) {
+            while (ticket == "0" || ticket.equals(winners)){
+                ticket = Integer.toString(rand.nextInt(tickets));
+            }
+            winners.add(ticket);
+            System.out.println("Билет №" + ticket + ": " + toy.getName() + "(id" + Long.toString(toy.getID()) + ")");
+            int winTicket =Integer.parseInt(ticket);
+            int giftId = Long.valueOf(toy.getID()).intValue();
+            items.set(winTicket,Long.valueOf(toy.getID()).toString());
+            ticket = "0";
+        }
+        System.out.println("=======================");
+
+        return items;
     }
 
     public String getUnitName(long id) {
@@ -133,6 +184,11 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
             return "";
         }
     }
+
+    private void RaffleGifts(){
+
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new ToyStoreIterator(stock);

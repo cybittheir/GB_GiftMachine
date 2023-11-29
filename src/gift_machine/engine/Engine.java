@@ -101,4 +101,16 @@ public class Engine {
     public void updateUnitFrequency(long id,int freq) {
         stock.changeUnitFrequency(id,freq);
     }
+
+    public Integer getAvailableMax(){
+        return stock.getAvailableMax();
+    }
+
+    public void getRaffleItemsList(){
+        stock.getRaffleItemsList();
+    }
+
+    public void saveRaffleResult(){
+        System.out.println("Сохранение результатов розыгрыша: ");
+    }
 }
