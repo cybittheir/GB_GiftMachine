@@ -29,6 +29,7 @@ public class FileHandler  implements FileJobAble{
         try (PrintWriter writer = new PrintWriter(filePath, "UTF-8")){
             writer.print(data);
             writer.close();
+            System.out.println("File '"+ filePath + "' saved.");
             return true;
         } catch (Exception e){
             e.printStackTrace();

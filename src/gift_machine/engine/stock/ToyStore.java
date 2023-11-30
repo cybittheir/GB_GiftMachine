@@ -78,7 +78,6 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
                 raffleItems.add(toy);
             }
         }
-
         return raffleItems;
     }
 
@@ -93,14 +92,20 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         String ticket = "0";
         Random rand = new Random();
         ArrayList<String> winners = new ArrayList<String>();
+        boolean ticketOK = false;
         for (T toy: raffleItems) {
-            while (ticket == "0" || ticket.equals(winners)){
+            while (!ticketOK){
                 ticket = Integer.toString(rand.nextInt(tickets));
+                if (!ticket.equals("0") && !winners.contains(ticket)) {
+                    ticketOK = true;
+                }
+                if (ticketOK){
+                    winners.add(ticket);
+                    int winTicket = Integer.parseInt(ticket);
+                    this.ticketsList.set(winTicket,Long.valueOf(toy.getID()).toString());
+                }
             }
-            winners.add(ticket);
-            int winTicket =Integer.parseInt(ticket);
-            this.ticketsList.set(winTicket,Long.valueOf(toy.getID()).toString());
-            ticket = "0";
+            ticketOK = false;
         }
 
     }
@@ -115,7 +120,7 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
             String winTicketList = winList();
             if (winTicketList.equals("")){
                 System.out.println("Wrong Frequency and Amount parameters for a successfull Raffle.\nCorrect them and try again.");
-                this.ticketsList.clear();
+                resetResult();
             } else {
                 System.out.println(winTicketList);
 
@@ -140,6 +145,9 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         } else {return true;}
     }
 
+    public void resetResult(){
+        this.ticketsList.clear();
+    }
     public String winList (){
         StringBuilder sB = new StringBuilder();
         if (isResult()) {

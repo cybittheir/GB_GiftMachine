@@ -6,7 +6,7 @@ public class ExportResult extends Command{
 
     public ExportResult(ConsoleUI consoleUI){
 
-        super("TODO: Export Prizes List",consoleUI);
+        super("Export Prizes List",consoleUI);
     }
 
     @Override

@@ -127,7 +127,9 @@ public class Engine {
 
         System.out.println("Сохранение результатов розыгрыша: ");
         FileHandler fileHandler = new FileHandler();
-        fileHandler.saveResult(stock.winList(), getExport());
+        if (fileHandler.saveResult(stock.winList(), getExport())){
+            stock.resetResult();
+        }
 
     }
 }
