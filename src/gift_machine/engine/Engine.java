@@ -117,7 +117,17 @@ public class Engine {
     public boolean isResult(){
         return stock.isResult();
     }
+
+
+    public String getExport(){
+        BaseInit init = new Config();
+        return init.exportFilePath();
+    }
     public void saveRaffleResult(){
+
         System.out.println("Сохранение результатов розыгрыша: ");
+        FileHandler fileHandler = new FileHandler();
+        fileHandler.saveResult(stock.winList(), getExport());
+
     }
 }

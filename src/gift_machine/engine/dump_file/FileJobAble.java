@@ -4,4 +4,6 @@ import java.io.Serializable;
 public interface FileJobAble {
     boolean saveDump(Serializable dump,String filePath);
     Object readDump(String filePath);
+
+    boolean saveResult(String listText,String filePath);
 }

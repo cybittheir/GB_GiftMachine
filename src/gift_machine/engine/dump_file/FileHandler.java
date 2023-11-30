@@ -1,6 +1,8 @@
 package gift_machine.engine.dump_file;
 
 import java.io.*;
+import java.nio.file.Files;
+
 public class FileHandler  implements FileJobAble{
     @Override
     public boolean saveDump(Serializable dump,String filePath){
@@ -20,6 +22,17 @@ public class FileHandler  implements FileJobAble{
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean saveResult(String data,String filePath){
+        try (PrintWriter writer = new PrintWriter(filePath, "UTF-8")){
+            writer.print(data);
+            writer.close();
+            return true;
+        } catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
     }
 }

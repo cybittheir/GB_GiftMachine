@@ -105,31 +105,6 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
 
     }
 
-    /*
-    public List<String> getRaffleItemsList(){
-        raffleItems= getRaffleItems();
-        int tickets = getAvailableMax() + 1;
-        ArrayList<String> items = new ArrayList<String>();
-        for (int i = 0; i < tickets; i++){
-            items.add("");
-        }
-        String ticket = "0";
-        Random rand = new Random();
-        ArrayList<String> winners = new ArrayList<String>();
-        for (T toy: raffleItems) {
-            while (ticket == "0" || ticket.equals(winners)){
-                ticket = Integer.toString(rand.nextInt(tickets));
-            }
-            winners.add(ticket);
-            int winTicket =Integer.parseInt(ticket);
-            items.set(winTicket,Long.valueOf(toy.getID()).toString());
-            ticket = "0";
-        }
-
-        return items;
-    }
-    */
-
 
     public void showWinTickets(){
         if (isResult()) {
@@ -137,7 +112,7 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
             System.out.println("Winners:");
             System.out.println("=======================");
 
-            String winTicketList = winList(this.ticketsList);
+            String winTicketList = winList();
             if (winTicketList.equals("")){
                 System.out.println("Wrong Frequency and Amount parameters for a successfull Raffle.\nCorrect them and try again.");
                 this.ticketsList.clear();
@@ -165,13 +140,17 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         } else {return true;}
     }
 
-    public String winList (List<String> items){
+    public String winList (){
         StringBuilder sB = new StringBuilder();
-        for (int ind = 0; ind < items.size(); ind++){
-            if (items.get(ind) !="") {
-                sB.append("Билет №" + ind + ": " + getUnitinfo(Integer.valueOf(items.get(ind))) + "(" +  items.get(ind) + ")\n");
+        if (isResult()) {
+            for (int ind = 0; ind < this.ticketsList.size(); ind++) {
+                if (this.ticketsList.get(ind) != "") {
+                    sB.append("Билет №" + ind + ": " + getUnitinfo(Integer.valueOf(this.ticketsList.get(ind))) + "(" + this.ticketsList.get(ind) + ")\n");
 
+                }
             }
+        } else {
+            sB.append("No result");
         }
         return sB.toString();
     }

@@ -14,7 +14,7 @@ public class Config implements BaseInit{
         String file = "stock.dump";
         return path + file;
     }
-    public static String getRaffleFilePath(){
+    public static String getResultFilePath(){
         String path = getPath();
         String file = "raffle.txt";
         return path + file;
@@ -31,6 +31,10 @@ public class Config implements BaseInit{
     }
     public String dumpFilePath(){
         return getFilePath();
+    }
+
+    public String exportFilePath(){
+        return getResultFilePath();
     }
 
 }
