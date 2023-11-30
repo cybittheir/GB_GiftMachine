@@ -95,7 +95,6 @@ public class ConsoleUI implements BaseUI{
     }
 
     public void raffle(){
-
         gate.getRaffleItemsList();
     }
 
@@ -105,13 +104,25 @@ public class ConsoleUI implements BaseUI{
     }
 
     private String getName(){
-        System.out.println("Название игрушки: ");
-        return scanner.nextLine();
+        String result = "";
+        while (result =="") {
+            System.out.println("Название игрушки: ");
+            result =scanner.nextLine();
+            if (result ==""){errorInput();}
+        }
+
+        return result;
     }
 
     private String getType(){
-        System.out.println("Категория игрушки: ");
-        return scanner.nextLine();
+        String result = "";
+        while (result =="") {
+            System.out.println("Категория игрушки: ");
+            result =scanner.nextLine();
+            if (result ==""){errorInput();}
+        }
+
+        return result;
     }
 
     private int getToyID(){
@@ -119,20 +130,23 @@ public class ConsoleUI implements BaseUI{
         while (result < 0) {
             System.out.println("Введите ID игрушки: ");
             String tmp=scanner.nextLine();
-            if (tmp.matches("^[0-9]*$")){
+            if (tmp!="" && tmp.matches("^[0-9]*$")){
                 result = Integer.parseInt(tmp);
             } else {errorInput();}
         }
         return result;
     }
 
+    public boolean isResult(){
+        return gate.isResult();
+    }
 
     private int getAmount(){
         int result = 0;
         while (result <= 0) {
             System.out.println("Количество (шт.): ");
             String tmp=scanner.nextLine();
-            if (tmp.matches("^[0-9]*$")){
+            if (tmp != "" && tmp.matches("^[0-9]*$")){
                 result = Integer.parseInt(tmp);
             } else {errorInput();}
         }

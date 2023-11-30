@@ -106,10 +106,17 @@ public class Engine {
         return stock.getAvailableMax();
     }
 
-    public void getRaffleItemsList(){
-        stock.getRaffleItemsList();
+    public void makeRaffle(){
+        stock.makeRaffle();
     }
 
+    public void showRaffleItemsList(){
+        stock.showWinTickets();
+    }
+
+    public boolean isResult(){
+        return stock.isResult();
+    }
     public void saveRaffleResult(){
         System.out.println("Сохранение результатов розыгрыша: ");
     }

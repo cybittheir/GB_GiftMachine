@@ -21,11 +21,17 @@ public class StockExample {
         Toy pos2 = new Toy("Lego MainCraft", "конструктор",6,2);
         Toy pos3 = new Toy("Lego StarWars", "конструктор",5,2);
         Toy pos4 = new Toy("Monopoly", "настольная игра",8,3);
+        Toy pos5 = new Toy("Набор для выжигания", "наборы для творчества",5,3);
+        Toy pos6 = new Toy("Porsche", "масштабные модели",10,3);
+        Toy pos7 = new Toy("Toyota Celica", "масштабные модели",15,4);
 
         toyStore.addToy(pos1);
         toyStore.addToy(pos2);
         toyStore.addToy(pos3);
         toyStore.addToy(pos4);
+        toyStore.addToy(pos5);
+        toyStore.addToy(pos6);
+        toyStore.addToy(pos7);
 
         return toyStore;
     }

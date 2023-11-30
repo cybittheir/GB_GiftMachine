@@ -1,17 +1,20 @@
 package gift_machine.engine.stock;
 
 import java.io.Serializable;
+import java.sql.Array;
 import java.time.LocalDate;
 import java.util.*;
 
 public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
     private List<T> stock;
-    private int availableMax;
+    private List<String> ticketsList;
     public List<T> raffleItems;
     public ToyStore(List<T> stock){
+
         this.stock = stock;
     }
     public ToyStore(){
+
         this(new ArrayList<T>());
     }
     public void addToy(T toy) {
@@ -79,6 +82,30 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         return raffleItems;
     }
 
+    public void makeRaffle(){
+        raffleItems= getRaffleItems();
+        int tickets = getAvailableMax() + 1;
+        ArrayList<String> ticketsList = new ArrayList<String>();
+        this.ticketsList = ticketsList;
+        for (int i = 0; i < tickets; i++){
+            this.ticketsList.add("");
+        }
+        String ticket = "0";
+        Random rand = new Random();
+        ArrayList<String> winners = new ArrayList<String>();
+        for (T toy: raffleItems) {
+            while (ticket == "0" || ticket.equals(winners)){
+                ticket = Integer.toString(rand.nextInt(tickets));
+            }
+            winners.add(ticket);
+            int winTicket =Integer.parseInt(ticket);
+            this.ticketsList.set(winTicket,Long.valueOf(toy.getID()).toString());
+            ticket = "0";
+        }
+
+    }
+
+    /*
     public List<String> getRaffleItemsList(){
         raffleItems= getRaffleItems();
         int tickets = getAvailableMax() + 1;
@@ -89,35 +116,65 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         String ticket = "0";
         Random rand = new Random();
         ArrayList<String> winners = new ArrayList<String>();
-        System.out.println("=======================");
-        System.out.println("Winners:");
-        System.out.println("=======================");
         for (T toy: raffleItems) {
             while (ticket == "0" || ticket.equals(winners)){
                 ticket = Integer.toString(rand.nextInt(tickets));
             }
             winners.add(ticket);
             int winTicket =Integer.parseInt(ticket);
-            int giftId = Long.valueOf(toy.getID()).intValue();
             items.set(winTicket,Long.valueOf(toy.getID()).toString());
             ticket = "0";
         }
-        String gift ="";
-
-        for (int ind = 0; ind < items.size(); ind++){
-            if (items.get(ind) !="") {
-                System.out.println("Билет №" + ind + ": " + getUnitName(Integer.valueOf(items.get(ind))) + ", " + getUnitType(Integer.valueOf(items.get(ind))) + "(" +  items.get(ind) + ")");
-
-            }
-        }
-        System.out.println("=======================");
-        System.out.println("win/total");
-        System.out.println(winners.size() + "/" + tickets);
-        System.out.println("=======================");
 
         return items;
     }
+    */
 
+
+    public void showWinTickets(){
+        if (isResult()) {
+            System.out.println("=======================");
+            System.out.println("Winners:");
+            System.out.println("=======================");
+
+            String winTicketList = winList(this.ticketsList);
+            if (winTicketList.equals("")){
+                System.out.println("Wrong Frequency and Amount parameters for a successfull Raffle.\nCorrect them and try again.");
+                this.ticketsList.clear();
+            } else {
+                System.out.println(winTicketList);
+
+                System.out.println("=======================");
+                System.out.println("Win/Total");
+                String[] winCount = winTicketList.split("\n");
+
+                System.out.println(winCount.length + "/" + this.ticketsList.size());
+            }
+            System.out.println("=======================");
+        } else {
+            System.out.println("=======================");
+            System.out.println("No Results. make Raffle first");
+            System.out.println("=======================");
+        }
+
+    }
+
+    public boolean isResult(){
+        if (this.ticketsList == null || this.ticketsList.isEmpty()){
+            return false;
+        } else {return true;}
+    }
+
+    public String winList (List<String> items){
+        StringBuilder sB = new StringBuilder();
+        for (int ind = 0; ind < items.size(); ind++){
+            if (items.get(ind) !="") {
+                sB.append("Билет №" + ind + ": " + getUnitinfo(Integer.valueOf(items.get(ind))) + "(" +  items.get(ind) + ")\n");
+
+            }
+        }
+        return sB.toString();
+    }
     public String getUnitName(long id) {
         String result = "";
         for (T toy: stock){
@@ -135,6 +192,17 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
             }
         }
         return result;
+    }
+
+    public String getUnitinfo(long id){
+        String result = "";
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                result = toy.getName() + ", " + toy.getType();
+            }
+        }
+        return result;
+
     }
     public Integer getUnitFrequency(long id) {
         int result = 0;

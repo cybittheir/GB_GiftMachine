@@ -6,11 +6,19 @@ public class RaffleGifts extends Command{
 
     public RaffleGifts(ConsoleUI consoleUI){
 
-        super("TODO: A Raffle",consoleUI);
+        super("A Raffle",consoleUI);
+
+
     }
 
     @Override
     public void execute() {
-        getConsoleUI().raffle();
+        if (getConsoleUI().isResult()){
+            System.out.println("*******************************************************************");
+            System.out.println("* New Raffle is not possible before previous results will be saved *");
+            System.out.println("********************************************************************");
+        } else {
+            getConsoleUI().raffle();
+        }
     }
 }

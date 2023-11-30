@@ -55,9 +55,15 @@ public class Gate {
     }
 
     public void getRaffleItemsList(){
-        engine.getRaffleItemsList();
+        engine.makeRaffle();
+        if (engine.isResult()) {
+            engine.showRaffleItemsList();
+        }
     }
 
+    public boolean isResult(){
+        return engine.isResult();
+    }
     public void editToyFrequency(long toyID,int raffleFrequency){
         engine.updateUnitFrequency(toyID,raffleFrequency);
     }

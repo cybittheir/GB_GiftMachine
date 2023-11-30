@@ -1,6 +1,7 @@
 package gift_machine.ui;
 
 import gift_machine.ui.commands.*;
+
 import java.util.ArrayList;
 import java.util.List;
 public class MainMenu {
@@ -9,18 +10,18 @@ public class MainMenu {
         commandList = new ArrayList<>();
         commandList.add(new AddToy(consoleUI));
         commandList.add(new ShowToys(consoleUI));
-//        commandList.add(new AddToyTypes(consoleUI));
-//        commandList.add(new ShowToyTypes(consoleUI));
-//        commandList.add(new EditToyTypes(consoleUI));
         commandList.add(new EditGiftFrequency(consoleUI));
-//        commandList.add(new DeleteToy(consoleUI));
         commandList.add(new RaffleGifts(consoleUI));
         commandList.add(new ExportResult(consoleUI));
+        commandList.add(new Finish(consoleUI));
 /** TODO: next time - import and export to JSON
         commandList.add(new ImportToysList(consoleUI));
         commandList.add(new ExportToysList(consoleUI));
+ //        commandList.add(new AddToyTypes(consoleUI));
+ //        commandList.add(new ShowToyTypes(consoleUI));
+ //        commandList.add(new EditToyTypes(consoleUI));
+ //        commandList.add(new DeleteToy(consoleUI));
  */
-        commandList.add(new Finish(consoleUI));
     }
 
     public int getMenuSize(){

@@ -11,7 +11,12 @@ public class ExportResult extends Command{
 
     @Override
     public void execute() {
-
-        getConsoleUI().exportResult();
+        if (getConsoleUI().isResult()){
+            getConsoleUI().exportResult();
+        } else {
+            System.out.println("*****************************************");
+            System.out.println("* Start A Raffle first. Nothing to save *");
+            System.out.println("*****************************************");
+        }
     }
 }
