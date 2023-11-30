@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e2d0e1ca-aadf-41b2-9d9e-2a546c2743cb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/gift_machine/engine/stock/Raffle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gift_machine/engine/stock/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/stock/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/stock/Stock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/stock/ToyStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/stock/ToyStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/gate/Gate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/gate/Gate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/ui/ConsoleUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/ui/ConsoleUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/ui/commands/ExportResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/ui/commands/ExportResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/ui/commands/RaffleGifts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/ui/commands/RaffleGifts.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

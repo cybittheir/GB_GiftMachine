@@ -84,7 +84,7 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         int tickets = getAvailableMax() + 1;
         ArrayList<String> items = new ArrayList<String>();
         for (int i = 0; i < tickets; i++){
-            items.add("F");
+            items.add("");
         }
         String ticket = "0";
         Random rand = new Random();
@@ -97,12 +97,22 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
                 ticket = Integer.toString(rand.nextInt(tickets));
             }
             winners.add(ticket);
-            System.out.println("Билет №" + ticket + ": " + toy.getName() + "(id" + Long.toString(toy.getID()) + ")");
             int winTicket =Integer.parseInt(ticket);
             int giftId = Long.valueOf(toy.getID()).intValue();
             items.set(winTicket,Long.valueOf(toy.getID()).toString());
             ticket = "0";
         }
+        String gift ="";
+
+        for (int ind = 0; ind < items.size(); ind++){
+            if (items.get(ind) !="") {
+                System.out.println("Билет №" + ind + ": " + getUnitName(Integer.valueOf(items.get(ind))) + ", " + getUnitType(Integer.valueOf(items.get(ind))) + "(" +  items.get(ind) + ")");
+
+            }
+        }
+        System.out.println("=======================");
+        System.out.println("win/total");
+        System.out.println(winners.size() + "/" + tickets);
         System.out.println("=======================");
 
         return items;
