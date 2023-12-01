@@ -8,10 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/raffle.txt" beforeDir="false" afterPath="$PROJECT_DIR$/raffle.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/Engine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/config/StockExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/config/StockExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/dump_file/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/dump_file/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/stock/Stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/stock/Stock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/stock/ToyStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/stock/ToyStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gift_machine/ui/commands/ExportResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/ui/commands/ExportResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gift_machine/engine/toy/Toy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gift_machine/engine/toy/Toy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -148,6 +148,20 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
     public void resetResult(){
         this.ticketsList.clear();
     }
+
+    public void removeGifts(){
+        if (isResult()) {
+            for (T toy: raffleItems) {
+                toy.setAmount(toy.getAmount()-1);
+                if (toy.getAmount() == 0){
+                    stock.remove(toy);
+                }
+            }
+
+
+        }
+    }
+
     public String winList (){
         StringBuilder sB = new StringBuilder();
         if (isResult()) {
@@ -176,6 +190,16 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         for (T toy: stock){
             if (toy.getID() == id) {
                 result = toy.getType();
+            }
+        }
+        return result;
+    }
+
+    public Integer getUnitAmount(long id) {
+        int result = -1;
+        for (T toy: stock){
+            if (toy.getID() == id) {
+                result = toy.getAmount();
             }
         }
         return result;
@@ -248,10 +272,6 @@ public class ToyStore<T extends Stock<T>> implements Serializable, Iterable<T>{
         } else {
             return "";
         }
-    }
-
-    private void RaffleGifts(){
-
     }
 
     @Override

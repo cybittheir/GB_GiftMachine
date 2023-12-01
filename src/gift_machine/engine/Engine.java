@@ -128,6 +128,7 @@ public class Engine {
         System.out.println("Сохранение результатов розыгрыша: ");
         FileHandler fileHandler = new FileHandler();
         if (fileHandler.saveResult(stock.winList(), getExport())){
+            stock.removeGifts();
             stock.resetResult();
         }
 

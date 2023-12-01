@@ -60,6 +60,8 @@ public class Toy implements Serializable, Stock<Toy> {
         this.raffleFreq = raffleFreq;
     }
 
+    public void setAmount(int amount){this.amount = amount;}
+
     @Override
     public String toString(){
         return getToyInfo();
